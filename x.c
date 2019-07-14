@@ -1389,19 +1389,10 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
 			fontpattern = FcFontSetMatch(0, fcsets, 1,
 					fcpattern, &fcres);
 
-<<<<<<< HEAD
 			/* Allocate memory for the new cache entry. */
 			if (frclen >= frccap) {
 				frccap += 16;
 				frc = xrealloc(frc, frccap * sizeof(Fontcache));
-=======
-			/*
-			 * Overwrite or create the new cache entry.
-			 */
-			if (frclen >= frccap) {
-                frccap += 16 ;
-                frc = xrealloc(frc,frccap * sizeof(Fontcache)) ;
->>>>>>> 18846416b9d31e0d432bb25edd9eb54259656e47
 			}
 
 			frc[frclen].font = XftFontOpenPattern(xw.dpy,

@@ -2,17 +2,6 @@
 
 Styx is a simple X terminal 
 
-
-## Requirements
-
-In order to build styx you need :
-
-- The Xlib header files
-- The following fonts :
-
-
-
-
 ## Installation
 
 Edit config.mk to match your local setup (st is installed into

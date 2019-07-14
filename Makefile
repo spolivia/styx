@@ -1,57 +1,57 @@
-# st - simple terminal
+# styx - simple terminal
 # See LICENSE file for copyright and license details.
 .POSIX:
 
 include config.mk
 
-SRC = st.c x.c
+SRC = styx.c x.c
 OBJ = $(SRC:.c=.o)
 
-all: options st
+all: options styx
 
 options:
-	@echo st build options:
-	@echo "CFLAGS  = $(STCFLAGS)"
-	@echo "LDFLAGS = $(STLDFLAGS)"
+	@echo styx build options:
+	@echo "CFLAGS  = $(STYXCFLAGS)"
+	@echo "LDFLAGS = $(STYXLDFLAGS)"
 	@echo "CC      = $(CC)"
 
 config.h:
 	cp config.def.h config.h
 
 .c.o:
-	$(CC) $(STCFLAGS) -c $<
+	$(CC) $(STYXCFLAGS) -c $<
 
-st.o: config.h st.h win.h
-x.o: arg.h config.h st.h win.h
+styx.o: config.h styx.h win.h
+x.o: arg.h config.h styx.h win.h
 
 $(OBJ): config.h config.mk
 
-st: $(OBJ)
-	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
+styx: $(OBJ)
+	$(CC) -o $@ $(OBJ) $(STYXLDFLAGS)
 
 clean:
-	rm -f st $(OBJ) st-$(VERSION).tar.gz
+	rm -f styx $(OBJ) styx-$(VERSION).tar.gz
 
 dist: clean
-	mkdir -p st-$(VERSION)
+	mkdir -p styx-$(VERSION)
 	cp -R FAQ LEGACY TODO LICENSE Makefile README config.mk\
-		config.def.h st.info st.1 arg.h st.h win.h $(SRC)\
-		st-$(VERSION)
-	tar -cf - st-$(VERSION) | gzip > st-$(VERSION).tar.gz
-	rm -rf st-$(VERSION)
+		config.def.h styx.info styx.1 arg.h styx.h win.h $(SRC)\
+		styx-$(VERSION)
+	tar -cf - styx-$(VERSION) | gzip > styx-$(VERSION).tar.gz
+	rm -rf styx-$(VERSION)
 
-install: st
+install: styx
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	cp -f st $(DESTDIR)$(PREFIX)/bin
-	chmod 755 $(DESTDIR)$(PREFIX)/bin/st
+	cp -f styx $(DESTDIR)$(PREFIX)/bin
+	chmod 755 $(DESTDIR)$(PREFIX)/bin/styx
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
-	sed "s/VERSION/$(VERSION)/g" < st.1 > $(DESTDIR)$(MANPREFIX)/man1/st.1
-	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/st.1
-	tic -sx st.info
-	@echo Please see the README file regarding the terminfo entry of st.
+	sed "s/VERSION/$(VERSION)/g" < styx.1 > $(DESTDIR)$(MANPREFIX)/man1/styx.1
+	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/styx.1
+	tic -sx styx.info
+	@echo Please see the README file regarding the terminfo entry of styx.
 
 uninstall:
-	rm -f $(DESTDIR)$(PREFIX)/bin/st
-	rm -f $(DESTDIR)$(MANPREFIX)/man1/st.1
+	rm -f $(DESTDIR)$(PREFIX)/bin/styx
+	rm -f $(DESTDIR)$(MANPREFIX)/man1/styx.1
 
 .PHONY: all options clean dist install uninstall

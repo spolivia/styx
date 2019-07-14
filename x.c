@@ -17,7 +17,7 @@
 
 static char *argv0;
 #include "arg.h"
-#include "st.h"
+#include "styx.h"
 #include "win.h"
 
 /* types used in config.h */
@@ -1615,7 +1615,7 @@ xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og)
 	/* draw the new one */
 	if (IS_SET(MODE_FOCUSED)) {
 		switch (win.cursor) {
-		case 7: /* st extension: snowman (U+2603) */
+		case 7: /* styx extension: snowman (U+2603) */
 			g.u = 0x2603;
 		case 0: /* Blinking Block */
 		case 1: /* Blinking Block (Default) */
@@ -2132,7 +2132,7 @@ run:
 		opt_cmd = argv;
 
 	if (!opt_title)
-		opt_title = (opt_line || !opt_cmd) ? "st" : opt_cmd[0];
+		opt_title = (opt_line || !opt_cmd) ? "styx" : opt_cmd[0];
 
 	setlocale(LC_CTYPE, "");
 	XSetLocaleModifiers("");

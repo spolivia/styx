@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "DejaVu Sans Mono:size=8:antialias=true:autohint=true";
+static char *font = "DejaVu Sans Mono:size=12:antialias=true:autohint=true";
 static char *font2[] = { "Inconsolata for Powerline:pixelsize=16:antialias=true:autohint=true" };
 static int borderpx = 2;
 
@@ -94,7 +94,7 @@ static const char *colorname[] = {
 	"#84b97c",
 	"#c3ba63",
 	"#639ee4",
-	"#b888e2",
+	"#edb7eb",
 	"#4bb1a7",
 	"#a7a7a7",
 
